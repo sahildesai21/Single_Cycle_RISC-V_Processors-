@@ -17,7 +17,5 @@ if (rst) begin
     else if (pc_write) begin
         pc_out <= pc_in;
         end
-    else
-        pc_out <= pc_out;   // Hold
-end
+    end
 endmodule
