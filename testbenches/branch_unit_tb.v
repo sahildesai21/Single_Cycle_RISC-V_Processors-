@@ -43,7 +43,6 @@ initial begin
 
     // Default
     rs1 = 1; rs2 = 2; funct3 = 3'b011; #10;
-
     $finish;
 end
 
