@@ -25,9 +25,9 @@ begin
 for (i = 0 ; i < 32; i = i+1)
     register[i] <= 32'b0;
 end
-else if (RegWrite && (rd != 5'bb00000)) begin
-    register[rd] <= write_data;
-    end
+else if (RegWrite && (rd != 5'b00000)) begin
+  register[rd] <= write_data;
+end
         
 end
 endmodule
