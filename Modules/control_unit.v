@@ -35,15 +35,15 @@ case(opcode)
     RegWrite = 1;
     ALUSrc = 0;
     case({funct7_5,funct3})
-    4'b0000 : ALUCtrl = 4'b0000;     // Add
-    4'b1000 : ALUCtrl = 4'b0001;     // Sub
-    4'b0001 : ALUCtrl = 4'b0010;     // SLL
-    4'b0101 : ALUCtrl = 4'b0011;     // SLR
-    4'b1101 : ALUCtrl = 4'b0100;     // SRA
-    4'b0010 : ALUCtrl = 4'b0101;     // SLT
-    4'b0011 : ALUCtrl = 4'b0110;     // SLTU
-    4'b0111 : ALUCtrl = 4'b0111;     // AND
-    4'b0110 : ALUCtrl = 4'b1000;     // OR
+    4'b0000: ALUCtrl = 4'b0000; // ADD
+    4'b1000: ALUCtrl = 4'b0001; // SUB
+    4'b0001: ALUCtrl = 4'b0101; // SLL
+    4'b0101: ALUCtrl = 4'b0110; // SRL
+    4'b1101: ALUCtrl = 4'b0111; // SRA
+    4'b0010: ALUCtrl = 4'b1000; // SLT
+    4'b0011: ALUCtrl = 4'b1001; // SLTU
+    4'b0111: ALUCtrl = 4'b0010; // AND
+    4'b0110: ALUCtrl = 4'b0011; // OR
     endcase
     end 
 
@@ -58,7 +58,7 @@ case(opcode)
     endcase
     end
     
-7'b00000011 : begin         // lw (Load Word – loads a 32-bit word from memory)
+7'b0000011 : begin         // lw (Load Word – loads a 32-bit word from memory)
     RegWrite = 1;
     MemRead = 1;
     MemToReg = 1;
@@ -75,11 +75,17 @@ case(opcode)
     end
     
 7'b1100011 : begin      // Branch (beq)
-    Branch = 1;
+     Branch = 1;
     ALUSrc = 0;
     ImmSel = 3'b010;        // B-type (Branch)
     case(funct3)
-    3'b000 : ALUCtrl = 4'b0001; // BEQ (uses SUB internally)
+        3'b000 : ALUCtrl = 4'b0001; // BEQ (uses SUB)
+        3'b001 : ALUCtrl = 4'b0001; // BNE (uses SUB)
+        3'b100 : ALUCtrl = 4'b1000; // BLT (signed compare)
+        3'b101 : ALUCtrl = 4'b1000; // BGE (signed compare)
+        3'b110 : ALUCtrl = 4'b1001; // BLTU (unsigned compare)
+        3'b111 : ALUCtrl = 4'b1001; // BGEU (unsigned compare)
+        default: ALUCtrl = 4'b0000; // NOP / Safe default
     endcase
     end
     
