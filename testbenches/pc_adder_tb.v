@@ -35,7 +35,6 @@ imm = 32'h00001000;   // +4096
 #10;
 
 $finish;
-
 end
 
 endmodule
