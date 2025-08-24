@@ -63,5 +63,4 @@ rs1 = 0;
 $display("Read x0 = %h (Expected = 00000000)", read_data1);
 $finish;
 end
-
 endmodule
