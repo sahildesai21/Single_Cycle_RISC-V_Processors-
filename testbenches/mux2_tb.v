@@ -34,5 +34,6 @@ sel = 1;
 #10;
 
 $finish;
+    
 end
 endmodule
