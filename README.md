@@ -87,7 +87,7 @@ The processor was synthesized successfully, generating a structurally correct ne
 
 ## Tools & Technologies
 - Hardware Description Language: Verilog HDL
-- Simulation Tools: Xilinx Vivado Simulator / ModelSim
+- Simulation Tools: Xilinx Vivado Simulator 
 - Synthesis Tool: Xilinx Vivado
 - ISA Standard: RISC-V RV32I
 - Design Methodology: RTL Design → Functional Simulation → Synthesis
